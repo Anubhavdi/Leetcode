@@ -1,20 +1,21 @@
 class Solution {
     public int mostFrequentEven(int[] nums) {
-        Map<Integer,Integer> map = new TreeMap<>();
+        int[] arr = new int[100001];
         for(int i:nums){
-            if(i%2==0) 
-                map.put(i,map.getOrDefault(i,0)+1);
+            if(i%2==0)
+                arr[i]++;
         }
-        if(map.size()==0) return -1;
-        int ans = 0;
-        int max = -1;
-        for(Map.Entry m:map.entrySet()){
-            if((int)m.getValue()>max){
-                max = (int)m.getValue();
-                ans =(int)m.getKey();
+        
+        int max = -1 , ans =0;
+        for(int i=0;i<100001;i++){
+            if(arr[i]>max){
+                max=arr[i];
+                ans=i;
             }
         }
+        // if even number is not present
+        if(max==0)
+            return -1;
         return ans;
     }
 }
-
