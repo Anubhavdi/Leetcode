@@ -1,8 +1,9 @@
 class Solution {
-    public int longestCommonSubsequence(String text1, String text2) {
-         
-        char[] str1 = text1.toCharArray();
-        char[] str2 = text2.toCharArray();
+    public int longestCommonSubsequence(String s1, String s2) {
+        
+        
+        char[] str1 = s1.toCharArray();
+        char[] str2 = s2.toCharArray();
         int[][] dp = new int[str1.length+1][str2.length+1];
         
         for(int i = 1;i<dp.length;i++){
