@@ -40,9 +40,9 @@ class Solution {
             else if(map.size()>k){
                 while(map.size()>k){
                     char ch = s.charAt(i);
-                    if(map.containsKey(s.charAt(i))){
+                    
                         map.put(s.charAt(i),map.get(ch)-1);
-                    }
+                    
                     if(map.get(s.charAt(i))==0){
                         map.remove(s.charAt(i));
                     }
