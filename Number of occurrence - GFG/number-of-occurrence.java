@@ -40,7 +40,7 @@ class Solution {
         // code here
         int start = search(arr,n,x,true);
         int end = search(arr,n,x,false);
-        if(start==-1 || end == -1) return 0;
+        if(start==-1 && end == -1) return 0;
         return end - start+1;
     }
     public int search(int[] nums,int n,int target,boolean isthere){
