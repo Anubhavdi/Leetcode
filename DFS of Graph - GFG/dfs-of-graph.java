@@ -46,7 +46,7 @@ class Solution {
     static void dfs(int v,ArrayList<ArrayList<Integer>> adj , boolean[] vis, ArrayList<Integer> ans){
         vis[v]=true;
         ans.add(v);
-        for(Integer neig:adj.get(v)){
+        for(int neig:adj.get(v)){
             if(!vis[neig]){
                 dfs(neig,adj,vis,ans);
             }
