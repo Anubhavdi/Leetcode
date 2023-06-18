@@ -33,19 +33,20 @@ class GFG
 
 //User function Template for Java//User function Template for Java
 class Solution{
-    ArrayList<Integer> subsetSums(ArrayList<Integer> list, int N){
+    ArrayList<Integer> subsetSums(ArrayList<Integer> arr, int N){
         // code here
-        ArrayList<Integer> res = new ArrayList<>();
-        generateSum(0,list,res,0);
-        return res;
+        
+        ArrayList<Integer> cur = new ArrayList<>();
+        generate(0,arr,cur,0);
+        return cur;
     }
     
-    public void generateSum(int idx,ArrayList<Integer> list , ArrayList<Integer> res,int sum){
-        res.add(sum);
-        for(int i=idx;i<list.size();i++){
-            sum += list.get(i);
-            generateSum(i+1,list,res,sum);
-            sum -= list.get(i);
+    public void generate(int index,ArrayList<Integer> arr,ArrayList<Integer> cur,int sum){
+        cur.add(sum);
+        for(int i=index;i<arr.size();i++){
+            sum+=arr.get(i);
+            generate(i+1,arr,cur,sum);
+            sum-=arr.get(i);
         }
     }
 }
