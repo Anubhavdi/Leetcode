@@ -27,17 +27,36 @@ class Solution {
   
      static int isHappy(int n) { 
          //code here
-         List<Integer> list = new ArrayList<>();
-        while(n!=1){
-            int temp = n;
-            n = 0;
+         if(n==1 || n==7) return 1;
+        int sum=n,temp=n;
+        while(sum>9){
+            sum=0;
             while(temp>0){
-                n += Math.pow((temp%10),2);
-                temp/=10;
+                int s=temp%10;
+                sum += s*s;
+                temp /= 10;
             }
-            if(list.contains(n)) return 0;
-            else list.add(n);
+            if(sum==1) return 1;
+            temp=sum;
         }
-        return 1;
+        if(sum==7) return 1;
+        return 0;
+         
+         
+         
+         
+         
+        //  List<Integer> list = new ArrayList<>();
+        // while(n!=1){
+        //     int temp = n;
+        //     n = 0;
+        //     while(temp>0){
+        //         n += Math.pow((temp%10),2);
+        //         temp/=10;
+        //     }
+        //     if(list.contains(n)) return 0;
+        //     else list.add(n);
+        // }
+        // return 1;
      }
 }
