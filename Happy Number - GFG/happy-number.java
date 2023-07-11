@@ -26,7 +26,7 @@ class GFG
 class Solution { 
   
   
-  public static int numSquare(int n){
+  public static int numSquareSum(int n){
         int sum = 0;
         while(n!=0){
             sum += (n%10)*(n%10);
@@ -37,13 +37,25 @@ class Solution {
     
      static int isHappy(int n) { 
          //code here
-         Set<Integer> set = new HashSet<>();
-        while(true){
-            n = numSquare(n);
-            if(n==1) return 1;
-            if(set.contains(n)) return 0;
-            set.add(n);
+          int slow, fast;
+        slow = fast = n;
+        do
+        {
+            slow = numSquareSum(slow);
+            fast = numSquareSum(numSquareSum(fast));
         }
+        while (slow != fast);
+        return (slow == 1) ? 1 :0;
+         
+         
+         
+        //  Set<Integer> set = new HashSet<>();
+        // while(true){
+        //     n = numSquare(n);
+        //     if(n==1) return 1;
+        //     if(set.contains(n)) return 0;
+        //     set.add(n);
+        // }
         
          
          
