@@ -17,17 +17,37 @@ class Solution {
         // return max;
         
         
+        // int ans = 0;
+        // for (int i = 0; i<points.length; ++i){
+        //     Map<Double, Integer> check = new HashMap<>();
+        //     for (int  j = i+1; j<points.length; ++j){
+        //         double slope;
+        //         if (points[i][0] == points[j][0])
+        //             slope = Double.MAX_VALUE;
+        //         else{
+        //             slope = (points[i][1] - points[j][1]) / ((double) (points[i][0] - points[j][0]));
+        //             if (slope == -0.0)
+        //                 slope = 0.0;
+        //         }
+        //         check.put(slope, check.getOrDefault(slope, 0) + 1);
+        //         ans = Math.max(ans, check.get(slope));
+        //     }
+        // }
+        // return ans+1;
+        
+        
         int ans = 0;
-        for (int i = 0; i<points.length; ++i){
+        for (int[] p1:points){
             Map<Double, Integer> check = new HashMap<>();
-            for (int  j = i+1; j<points.length; ++j){
+            for (int[]  p2:points){
+                if(p1==p2){
+                    continue;
+                }
                 double slope;
-                if (points[i][0] == points[j][0])
+                if (p1[0] == p2[0])
                     slope = Double.MAX_VALUE;
                 else{
-                    slope = (points[i][1] - points[j][1]) / ((double) (points[i][0] - points[j][0]));
-                    if (slope == -0.0)
-                        slope = 0.0;
+                    slope = (p2[1] - p1[1]) / ((double) (p2[0] - p1[0]));
                 }
                 check.put(slope, check.getOrDefault(slope, 0) + 1);
                 ans = Math.max(ans, check.get(slope));
