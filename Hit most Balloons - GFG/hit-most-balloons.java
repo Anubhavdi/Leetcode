@@ -52,10 +52,11 @@ class Solution {
             }
             double slope = (double)(p2[1] - p1[1])/(double)(p2[0] - p1[0]);
             hm.put(slope, hm.getOrDefault(slope, 0)+1);
+            ans = Math.max(ans,hm.get(slope)+count);
             
          }
-         for(int values : hm.values())
-          ans = Math.max(ans, values+count);
+        //  for(int values : hm.values())
+        //   ans = Math.max(ans, values+count);
            
           hm.clear(); 
       }
