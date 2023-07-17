@@ -131,23 +131,43 @@ class Solution
     {
         // Your code here
         ArrayList<Integer> list = new ArrayList<>();
-        Queue<Node> queue = new LinkedList<>();
-        if(root==null) return list;
-        queue.offer(root);
-        while(!queue.isEmpty()){
-            int n = queue.size();
-            for(int i=0;i<n;i++){
-                if(queue.peek().left!=null){
-                    queue.add(queue.peek().left);
-                }
-                if(queue.peek().right!=null){
-                    queue.add(queue.peek().right);
-                }
-                list.add(queue.poll().data);
-            }
+        // Queue<Node> queue = new LinkedList<>();
+        // if(root==null) return list;
+        // queue.offer(root);
+        // while(!queue.isEmpty()){
+        //     int n = queue.size();
+        //     for(int i=0;i<n;i++){
+        //         if(queue.peek().left!=null){
+        //             queue.add(queue.peek().left);
+        //         }
+        //         if(queue.peek().right!=null){
+        //             queue.add(queue.peek().right);
+        //         }
+        //         list.add(queue.poll().data);
+        //     }
+        // }
+        // return list;
+        
+        // System.out.println(ht(root));
+        for(int i=1;i<=ht(root);i++){
+            currentlevel(root,i,list);
         }
+        
         return list;
         
+    }
+    public static void currentlevel(Node root,int level,ArrayList<Integer> list){
+        if(root==null) return ;
+        if(level==1) list.add(root.data);
+        else if(level>1) {
+            currentlevel(root.left,level-1,list);
+            currentlevel(root.right,level-1,list);
+        }
+    }
+    
+    public static int ht(Node root){
+        if(root==null) return 0;
+        return Math.max(ht(root.left),ht(root.right))+1;
     }
 }
 
