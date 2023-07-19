@@ -113,7 +113,7 @@ class Solution
 	{
 	    ArrayList<Integer> list = new ArrayList<>();
 	    if(isLeaf(root)==false)  list.add(root.data);
-	    addleft(root,list);
+	    addleft(root.left,list);
 	    addleaf(root,list);
 	    addright(root,list);
 	    return list;
@@ -123,16 +123,26 @@ class Solution
 	    return (root.left==null) && (root.right==null);
 	}
 	
-	void addleft(Node root,ArrayList<Integer> list){
-	    Node cur = root.left;
-	    while(cur!=null){
+	void addleft(Node cur,ArrayList<Integer> list){
+	   // Node cur = root.left;
+	   // while(cur!=null){
+	   //     if(isLeaf(cur)==false) list.add(cur.data);
+	   //     if(cur.left!=null){
+	   //         cur = cur.left;
+	   //     }else{
+	   //         cur = cur.right;
+	   //     }
+	   // }
+	   
+	    
+	        if(cur==null) return;
 	        if(isLeaf(cur)==false) list.add(cur.data);
 	        if(cur.left!=null){
-	            cur = cur.left;
+	            addleft(cur.left,list);
 	        }else{
-	            cur = cur.right;
+	            addleft(cur.right,list);
 	        }
-	    }
+	    
 	    
 	}
 	
