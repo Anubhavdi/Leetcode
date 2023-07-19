@@ -18,16 +18,14 @@ class Solution {
         
         Queue < TreeNode > queue = new LinkedList < TreeNode > ();
         List  <List< Integer> > wrapList = new ArrayList < > ();
-
         if (root == null) return wrapList;
-
         queue.offer(root);
         boolean flag = true;
         while (!queue.isEmpty()) {
             int levelNum = queue.size();
-            List < Integer > subList = new ArrayList < Integer > (levelNum);
+            List < Integer > subList = new ArrayList <> ();
             for (int i = 0; i < levelNum; i++) {
-                int index = i;
+                // int index = i;
                 if (queue.peek().left != null) queue.offer(queue.peek().left);
                 if (queue.peek().right != null) queue.offer(queue.peek().right);
                 if (flag == true) subList.add(queue.poll().val);
