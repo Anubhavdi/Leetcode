@@ -38,11 +38,15 @@ class Solution {
 int dia = 0;
 public int diameterOfBinaryTree(TreeNode root) {
     if(root == null) return 0;
-    int leftHeight = findHeight(root.left);
-    int rightHeight = findHeight(root.right);
-    dia = Math.max(dia, leftHeight + rightHeight);
     diameterOfBinaryTree(root.left);
     diameterOfBinaryTree(root.right);
+    int leftHeight = findHeight(root.left);
+    int rightHeight = findHeight(root.right);
+    // int leftHeight = findHeight(root.left);
+    // int rightHeight = findHeight(root.right);
+    dia = Math.max(dia, leftHeight + rightHeight);
+    // diameterOfBinaryTree(root.left);
+    // diameterOfBinaryTree(root.right);
     return dia;
 }
 }
