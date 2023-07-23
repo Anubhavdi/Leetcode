@@ -29,7 +29,7 @@ class Solution {
         }
         //  priority Queue (complete binary tree property)
         //  assigning indexes as we assign indexes in the implementatiaon of PriorityQueue
-        LinkedList<Pair> q = new LinkedList<>();
+        Deque<Pair> q = new LinkedList<>();
         q.add(new Pair(root, 0));
         int maxWidth = 0;
         
