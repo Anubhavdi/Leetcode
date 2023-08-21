@@ -41,21 +41,42 @@ class Solution {
         
         
 //         
-        Map<Integer,Integer> map = new HashMap<>();
-        for(int i:nums1){
-            map.put(i,map.getOrDefault(i,0)+1);
-        }
+//         Map<Integer,Integer> map = new HashMap<>();
+//         for(int i:nums1){
+//             map.put(i,map.getOrDefault(i,0)+1);
+//         }
         
-        int[] res = new int[nums1.length];
-        int j =0;
-        for(int i:nums2){
-            if(map.containsKey(i) && map.get(i)>0){
-                res[j++] = i;
-                map.put(i,map.get(i)-1);
+//         int[] res = new int[nums1.length];
+//         int j =0;
+//         for(int i:nums2){
+//             if(map.containsKey(i) && map.get(i)>0){
+//                 res[j++] = i;
+//                 map.put(i,map.get(i)-1);
+//             }
+//         }
+        
+//         return Arrays.copyOf(res,j);
+        
+        
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+        int i=0,j=0;
+        int m = nums1.length;
+        int n = nums2.length;
+        int res[] = new int[m];
+        int c = 0;
+        while(i<m && j<n){
+            if(nums1[i]==nums2[j]){
+                res[c++] = nums1[i];
+                i++;
+                j++;
+            }else if(nums1[i]>nums2[j]){
+                j++;
+            }else{
+                i++;
             }
         }
-        
-        return Arrays.copyOf(res,j);
+        return Arrays.copyOf(res,c);
         
     }
 }
