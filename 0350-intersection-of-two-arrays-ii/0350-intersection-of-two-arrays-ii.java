@@ -22,20 +22,39 @@ class Solution {
 //         return Arrays.copyOf(res,j);
         
         
-        List<Integer> list = new ArrayList<>();
+//         List<Integer> list = new ArrayList<>();
+//         for(int i:nums1){
+//             list.add(i);
+//         }
+        
+//         int[] res = new int [nums1.length];
+//         int j = 0;
+//         for(int i:nums2){
+//             if(list.contains(i)){
+//                 res[j++] = i;
+//                 list.remove(Integer.valueOf(i));
+                
+//             }
+//         }
+//         return Arrays.copyOf(res,j);
+        
+        
+        
+//         
+        Map<Integer,Integer> map = new HashMap<>();
         for(int i:nums1){
-            list.add(i);
+            map.put(i,map.getOrDefault(i,0)+1);
         }
         
-        int[] res = new int [nums1.length];
-        int j = 0;
+        int[] res = new int[nums1.length];
+        int j =0;
         for(int i:nums2){
-            if(list.contains(i)){
+            if(map.containsKey(i) && map.get(i)>0){
                 res[j++] = i;
-                list.remove(Integer.valueOf(i));
-                
+                map.put(i,map.get(i)-1);
             }
         }
+        
         return Arrays.copyOf(res,j);
         
     }
